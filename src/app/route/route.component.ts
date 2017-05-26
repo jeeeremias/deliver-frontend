@@ -12,6 +12,8 @@ export class RouteComponent implements OnInit {
   public longitudeOrigin: number;
   public latitudeDest: number;
   public longitudeDest: number;
+  public latitude: number;
+  public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
   public distance: number;
@@ -31,6 +33,8 @@ export class RouteComponent implements OnInit {
     this.longitudeOrigin = 0;
     this.latitudeDest = 0;
     this.longitudeDest = 0;
+    this.latitude = 0;
+    this.longitude = 0;
 
     //create search FormControl
     this.searchControl = new FormControl();
@@ -64,11 +68,12 @@ export class RouteComponent implements OnInit {
 
   public distanceMatrix(): void {
     let service = new google.maps.DistanceMatrixService();
-    service.getDistanceMatrix({
+    let request = {
       origins: [new google.maps.LatLng(this.latitude, this.longitude)],
       destinations: [new google.maps.LatLng(50.087692, 14.421150)],
-      travelMode: 'DRIVING'
-    }, this.matrixCallback);
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+    service.getDistanceMatrix(request, this.matrixCallback);
   }
 
   private matrixCallback(
