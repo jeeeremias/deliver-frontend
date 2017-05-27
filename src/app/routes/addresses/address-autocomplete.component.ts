@@ -2,6 +2,8 @@ import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core'
 import { FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 
+import { Address } from './address';
+
 @Component({
   selector: 'address-autocomplete',
   templateUrl: './address-autocomplete.component.html',
@@ -9,8 +11,7 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class AddressAutocompleteComponent implements OnInit {
 
-  private latitude: number;
-  private longitude: number;
+  private address: Address;
 
   @ViewChild("address")
   public addressElem: ElementRef;
@@ -21,8 +22,8 @@ export class AddressAutocompleteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.latitude = 0;
-    this.longitude = 0;
+    this.address.latitude = 0;
+    this.address.longitude = 0;
 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
@@ -40,18 +41,14 @@ export class AddressAutocompleteComponent implements OnInit {
           }
 
           //set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
+          this.address.latitude = place.geometry.location.lat();
+          this.address.longitude = place.geometry.location.lng();
         });
       });
     });
   }
 
-  public getLatitude(): number {
-      return this.latitude;
-  }
-
-  public getLongitude(): number {
-      return this.longitude;
+  public getAddress(): Address {
+    return this.address;
   }
 }
