@@ -8,18 +8,14 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class RouteComponent implements OnInit {
 
-  public latitudeOrigin: number;
-  public longitudeOrigin: number;
-  public latitudeDest: number;
-  public longitudeDest: number;
-  public latitude: number;
-  public longitude: number;
-  public searchControl: FormControl;
   public zoom: number;
   public distance: number;
 
-  @ViewChild("search")
-  public searchElementRef: ElementRef;
+  @ViewChild("origin")
+  public origin: ElementRef;
+
+  @ViewChild("destination")
+  public destination: ElementRef;
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
@@ -35,9 +31,6 @@ export class RouteComponent implements OnInit {
     this.longitudeDest = 0;
     this.latitude = 0;
     this.longitude = 0;
-
-    //create search FormControl
-    this.searchControl = new FormControl();
 
     //set current position
     this.setCurrentPosition();

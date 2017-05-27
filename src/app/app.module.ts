@@ -4,7 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent }  from './app.component';
-import { RouteComponent }  from './route/route.component';
+import { RouteComponent }  from './routes/route.component';
+import { AddressAutocompleteComponent } from './routes/addresses/address-autocomplete.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { RouteComponent }  from './route/route.component';
   ],
   declarations: [
     AppComponent,
-    RouteComponent
+    RouteComponent,
+    AddressAutocompleteComponent
   ],
   bootstrap: [
     RouteComponent
