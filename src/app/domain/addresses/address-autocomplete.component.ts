@@ -22,6 +22,7 @@ export class AddressAutocompleteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.address = new Address();
     this.address.latitude = 0;
     this.address.longitude = 0;
 

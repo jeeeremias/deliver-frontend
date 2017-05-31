@@ -1,4 +1,4 @@
-import { Address } from './addresses/address'
+import { Address } from '../addresses/address'
 
 export class Route {
     origin: Address;

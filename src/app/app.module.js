@@ -10,8 +10,9 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var core_2 = require("@agm/core");
 var app_component_1 = require("./app.component");
-var route_component_1 = require("./routes/route.component");
-var address_autocomplete_component_1 = require("./routes/addresses/address-autocomplete.component");
+var route_component_1 = require("./domain/routes/route.component");
+var route_expenses_config_1 = require("./domain/routes/route-expenses-config");
+var address_autocomplete_component_1 = require("./domain/addresses/address-autocomplete.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,6 +31,7 @@ AppModule = __decorate([
         declarations: [
             app_component_1.AppComponent,
             route_component_1.RouteComponent,
+            route_expenses_config_1.RouteExpensesConfigComponent,
             address_autocomplete_component_1.AddressAutocompleteComponent
         ],
         bootstrap: [
