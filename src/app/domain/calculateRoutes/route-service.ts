@@ -10,7 +10,7 @@ export class RouteService {
 
     newRoute$ = this.routeInformationSource.asObservable();
 
-    sendRouteInformation(route: RouteInformation) {
+    sendRouteInformation(route: RouteInformation): void {
         this.routeInformationSource.next(route);
     }
 }

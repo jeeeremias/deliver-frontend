@@ -4,7 +4,7 @@ import { MapsAPILoader } from '@agm/core';
 
 import { Address } from '../addresses/address';
 import { RouteExpensesConfigComponent } from './route-expenses-config.component';
-import { RouteService } from '../RouteService';
+import { RouteService } from '../route-service';
 import { RouteInformation } from './route-information';
 
 @Component({
@@ -33,18 +33,19 @@ export class RouteComponent {
       destinations: [new google.maps.LatLng(this.destination.latitude, this.destination.longitude)],
       travelMode: google.maps.TravelMode.DRIVING
     };
-    service.getDistanceMatrix(request, this.matrixCallback);
-  }
+    service.getDistanceMatrix(request,
+    (response: google.maps.DistanceMatrixResponse, status: google.maps.DistanceMatrixStatus) => {
+      let routeInfo: RouteInformation = new RouteInformation();
+      console.log(response);
 
-  private matrixCallback(
-    response: google.maps.DistanceMatrixResponse,
-    status: google.maps.DistanceMatrixStatus
-  ): void {
-    console.log(response);
+      routeInfo.destination = response.destinationAddresses[0];
+      routeInfo.origin = response.originAddresses[0];
+      routeInfo.distance = response.rows[0].elements[0].distance.text;
+      routeInfo.duration = response.rows[0].elements[0].duration.text;
+      routeInfo.price = 70;
 
-    let routeInfo: RouteInformation = new RouteInformation();
-
-    this.routeService.sendRouteInformation(routeInfo);
+      this.routeService.sendRouteInformation(routeInfo);
+    });
   }
 
   public setOrigin(origin: Address) {

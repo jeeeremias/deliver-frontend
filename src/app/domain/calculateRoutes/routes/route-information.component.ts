@@ -2,13 +2,12 @@ import { Component } from "@angular/core";
 import { Subscription }   from 'rxjs/Subscription';
 
 import { RouteInformation } from '../routes/route-information';
-import { RouteService } from '../RouteService';
+import { RouteService } from '../route-service';
 
 @Component({
   selector: 'route-information',
   templateUrl: './route-information.component.html',
-  styleUrls: [ './route-information.component.css' ],
-  providers: [RouteService]
+  styleUrls: [ './route-information.component.css' ]
 })
 export class RouteInformationComponent {
 
@@ -19,7 +18,10 @@ export class RouteInformationComponent {
     private routeService: RouteService
   ) {
     this.subscription = routeService.newRoute$.subscribe(
-      r => this.routeInfo = r
+      r => {
+        this.routeInfo = r;
+        console.log(this.routeInfo);
+      }
     )
   }
 
