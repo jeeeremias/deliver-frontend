@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
+
+import {  } from '../routes/';
 
 @Component({
   selector: 'route-expenses-config',
@@ -6,5 +8,7 @@ import { Component } from "@angular/core";
   styleUrls: [ './route-expenses-config.component.css' ]
 })
 export class RouteExpensesConfigComponent {
-
+  
+  public kmPrice: number;
+  public flatRate: number;
 }

@@ -1,6 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent }  from './app.component';
@@ -12,11 +12,11 @@ import { RouteInformationComponent } from './domain/calculateRoutes/routes/route
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCgwb2-5lARCTURTC0_eFf5fV9_1tY4MQs',
       libraries: ['places', 'geometry']
-    }),
-    ReactiveFormsModule
+    })
   ],
   declarations: [
     AppComponent,

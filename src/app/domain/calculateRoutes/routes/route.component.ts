@@ -4,7 +4,7 @@ import { MapsAPILoader } from '@agm/core';
 
 import { Address } from '../addresses/address';
 import { RouteExpensesConfigComponent } from './route-expenses-config.component';
-import { RouteService } from '../route-service';
+import { RouteService } from '../route.service';
 import { RouteInformation } from './route-information';
 
 @Component({
@@ -36,13 +36,12 @@ export class RouteComponent {
     service.getDistanceMatrix(request,
     (response: google.maps.DistanceMatrixResponse, status: google.maps.DistanceMatrixStatus) => {
       let routeInfo: RouteInformation = new RouteInformation();
-      console.log(response);
 
       routeInfo.destination = response.destinationAddresses[0];
       routeInfo.origin = response.originAddresses[0];
       routeInfo.distance = response.rows[0].elements[0].distance.text;
       routeInfo.duration = response.rows[0].elements[0].duration.text;
-      routeInfo.price = 70;
+      routeInfo.price = this.expenses.kmPrice * ((response.rows[0].elements[0].distance.value/1000)) + this.expenses.flatRate;
 
       this.routeService.sendRouteInformation(routeInfo);
     });

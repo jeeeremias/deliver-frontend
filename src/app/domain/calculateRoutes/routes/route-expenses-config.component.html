@@ -1,20 +1,14 @@
 <div class="form-horizontal">
     <div class="form-group">
-        <label class="control-label col-sm-2" for="gasPrice">Preço da Gasolina:</label>
-        <div class="col-sm-10">
-            <input type="number" class="form-control" id="gasPrice" placeholder="Value">
-        </div>
-    </div>
-    <div class="form-group">
         <label class="control-label col-sm-2" for="kmPrice">Preço do km:</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" id="kmPrice" placeholder="Value">
+            <input type="number" [(ngModel)]="kmPrice" class="form-control" id="kmPrice" placeholder="Value">
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-2" for="tax">Taxa fixa:</label>
+        <label class="control-label col-sm-2" for="flatRate">Taxa fixa:</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" id="tax" placeholder="Value">
+            <input type="number" [(ngModel)]="flatRate" class="form-control" id="flatRate" placeholder="Value">
         </div>
     </div>
 </div>

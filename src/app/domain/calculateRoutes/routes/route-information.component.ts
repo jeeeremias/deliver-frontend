@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { Subscription }   from 'rxjs/Subscription';
 
 import { RouteInformation } from '../routes/route-information';
-import { RouteService } from '../route-service';
+import { RouteService } from '../route.service';
 
 @Component({
   selector: 'route-information',
@@ -11,17 +11,14 @@ import { RouteService } from '../route-service';
 })
 export class RouteInformationComponent {
 
-  routeInfo: RouteInformation = new RouteInformation();
+  private routeInfo: RouteInformation = new RouteInformation();
   subscription: Subscription;
 
   constructor(
     private routeService: RouteService
   ) {
     this.subscription = routeService.newRoute$.subscribe(
-      r => {
-        this.routeInfo = r;
-        console.log(this.routeInfo);
-      }
+      r => this.routeInfo = r
     )
   }
 
