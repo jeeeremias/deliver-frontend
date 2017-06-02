@@ -4,10 +4,13 @@ import { MapsAPILoader } from '@agm/core';
 
 import { Address } from '../addresses/address';
 import { RouteExpensesConfigComponent } from './route-expenses-config.component';
+import { RouteService } from '../RouteService';
+import { RouteInformation } from './route-information';
 
 @Component({
   selector: 'route',
   templateUrl: './route.component.html',
+  providers: [RouteService]
 })
 export class RouteComponent {
 
@@ -19,7 +22,8 @@ export class RouteComponent {
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private routeService: RouteService
   ) {}
 
   public distanceMatrix(): void {
@@ -37,6 +41,10 @@ export class RouteComponent {
     status: google.maps.DistanceMatrixStatus
   ): void {
     console.log(response);
+
+    let routeInfo: RouteInformation = new RouteInformation();
+
+    this.routeService.sendRouteInformation(routeInfo);
   }
 
   public setOrigin(origin: Address) {

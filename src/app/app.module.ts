@@ -7,6 +7,7 @@ import { AppComponent }  from './app.component';
 import { RouteComponent }  from './domain/calculateRoutes/routes/route.component';
 import { RouteExpensesConfigComponent } from './domain/calculateRoutes/routes/route-expenses-config.component';
 import { AddressAutocompleteComponent } from './domain/calculateRoutes/addresses/address-autocomplete.component';
+import { RouteInformationComponent } from './domain/calculateRoutes/routes/route-information.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { AddressAutocompleteComponent } from './domain/calculateRoutes/addresses
     AppComponent,
     RouteComponent,
     RouteExpensesConfigComponent,
-    AddressAutocompleteComponent
+    AddressAutocompleteComponent,
+    RouteInformationComponent
   ],
   bootstrap: [
     RouteComponent
