@@ -5,7 +5,7 @@ import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent }  from './app.component';
 import { RouteComponent }  from './domain/calculateRoutes/routes/route.component';
-import { RouteExpensesConfigComponent } from './domain/calculateRoutes/routes/route-expenses-config';
+import { RouteExpensesConfigComponent } from './domain/calculateRoutes/routes/route-expenses-config.component';
 import { AddressAutocompleteComponent } from './domain/calculateRoutes/addresses/address-autocomplete.component';
 
 @NgModule({
