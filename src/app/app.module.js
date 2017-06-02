@@ -10,9 +10,9 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var core_2 = require("@agm/core");
 var app_component_1 = require("./app.component");
-var route_component_1 = require("./domain/routes/route.component");
-var route_expenses_config_1 = require("./domain/routes/route-expenses-config");
-var address_autocomplete_component_1 = require("./domain/addresses/address-autocomplete.component");
+var route_component_1 = require("./domain/calculateRoutes/routes/route.component");
+var route_expenses_config_1 = require("./domain/calculateRoutes/routes/route-expenses-config");
+var address_autocomplete_component_1 = require("./domain/calculateRoutes/addresses/address-autocomplete.component");
 var AppModule = (function () {
     function AppModule() {
     }
