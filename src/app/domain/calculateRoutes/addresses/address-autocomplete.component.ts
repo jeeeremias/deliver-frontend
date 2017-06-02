@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 
@@ -12,6 +12,9 @@ import { Address } from './address';
 export class AddressAutocompleteComponent implements OnInit {
 
   private address: Address;
+
+  @Output()
+  private addressChanged: EventEmitter<Address> = new EventEmitter<Address>();
 
   @ViewChild("address")
   public addressElem: ElementRef;
@@ -44,12 +47,10 @@ export class AddressAutocompleteComponent implements OnInit {
           //set latitude, longitude and zoom
           this.address.latitude = place.geometry.location.lat();
           this.address.longitude = place.geometry.location.lng();
+
+          this.addressChanged.emit(this.address);
         });
       });
     });
-  }
-
-  public getAddress(): Address {
-    return this.address;
   }
 }

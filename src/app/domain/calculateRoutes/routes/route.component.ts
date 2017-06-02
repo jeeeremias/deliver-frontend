@@ -2,7 +2,8 @@ import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core'
 import { FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 
-import { Route } from './route';
+import { Address } from '../addresses/address';
+import { RouteExpensesConfigComponent } from './route-expenses-config.component';
 
 @Component({
   selector: 'route',
@@ -10,19 +11,22 @@ import { Route } from './route';
 })
 export class RouteComponent {
 
-  public zoom: number;
-  public distance: number;
+  private origin: Address;
+  private destination: Address;
+
+  @ViewChild("expenses")
+  private expenses: RouteExpensesConfigComponent;
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {}
 
-  public distanceMatrix(route: Route): void {
+  public distanceMatrix(): void {
     let service = new google.maps.DistanceMatrixService();
     let request = {
-      origins: [new google.maps.LatLng(route.origin.latitude, route.origin.longitude)],
-      destinations: [new google.maps.LatLng(route.destination.latitude, route.destination.longitude)],
+      origins: [new google.maps.LatLng(this.origin.latitude, this.origin.longitude)],
+      destinations: [new google.maps.LatLng(this.destination.latitude, this.destination.longitude)],
       travelMode: google.maps.TravelMode.DRIVING
     };
     service.getDistanceMatrix(request, this.matrixCallback);
@@ -33,5 +37,13 @@ export class RouteComponent {
     status: google.maps.DistanceMatrixStatus
   ): void {
     console.log(response);
+  }
+
+  public setOrigin(origin: Address) {
+    this.origin = origin;
+  }
+
+  public setDestination(destination: Address) {
+    this.destination = destination;
   }
 }
