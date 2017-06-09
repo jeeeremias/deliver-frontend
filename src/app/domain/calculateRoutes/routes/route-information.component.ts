@@ -11,7 +11,7 @@ import { RouteService } from '../route.service';
 })
 export class RouteInformationComponent {
 
-  private routeInfo: RouteInformation = new RouteInformation();
+  routeInfo: RouteInformation = new RouteInformation();
   subscription: Subscription;
 
   constructor(
